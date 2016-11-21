@@ -1,5 +1,21 @@
 #include "Card.h"
 
+//*************************Card*************************
+//constructor
+Card::Card(Shape shape1): shape(shape1){};
+
+//destructor
+Card::~Card() {};
+
+Card::Card(const Card& card): shape(card.shape) {}
+
+Card& Card::operator=(const Card&) {return *this;}
+
+/*Shape Card::getShape() {
+    return this->shape;
+};*/
+
+
 string Card::toString() {
 
     string s="";
@@ -14,7 +30,25 @@ string Card::toString() {
             s = "S";
     }
     return s;
-}
+};
+
+//******************************************************
+
+
+//**********************FigureCard**********************
+//constructor
+FigureCard::FigureCard(Figure figure1, Shape shape1):Card(shape1),figure(figure1){};
+
+FigureCard::~FigureCard() {}
+
+//copy constructor
+FigureCard::FigureCard(const FigureCard& copyCard) :Card(copyCard),figure(copyCard.figure){};
+
+FigureCard& FigureCard::operator=(const FigureCard&) {}
+
+/*Figure FigureCard::getFigure() {
+    return this->figure;
+};*/
 
 string FigureCard::toString() {
 
@@ -34,17 +68,35 @@ string FigureCard::toString() {
             break;
     }
     return SNF;
-}
+};
+
+//******************************************************
+
+
+//*********************NumericCard**********************
+//constructor
+NumericCard::NumericCard(int number1, Shape shape1):Card(shape1),number(number1){};
+
+NumericCard::~NumericCard() {}
+
+//copy constructor
+NumericCard::NumericCard(const NumericCard& copyCard):Card(copyCard),number(copyCard.number){};
+
+NumericCard& NumericCard::operator=(const NumericCard&) {return *this;}
+
+/*int NumericCard::getNumber() {
+    return this->number;
+};*/
 
 string NumericCard::toString(){
     return ""+number + Card::toString();
-}
+};
 
-Card::Card(Shape shape1): shape(shape1){};
+//******************************************************
 
-Card::~Card() {}
 
-FigureCard::FigureCard(Figure figure1, Shape shape1):Card(shape1),figure(figure1){}
 
-NumericCard::NumericCard(int number1, Shape shape1):Card(shape1),number(number1){}
+
+
+
 
