@@ -4,6 +4,9 @@
 #include <iostream>
 using namespace std;
 
+class NumericCard;
+class FigureCard;
+
 enum Shape {
     Club,
     Diamond,
@@ -28,6 +31,7 @@ public:
 	Card(const Card&);
 	Card& operator=(const Card&);
 //	Shape getShape();
+	virtual bool greaterThen(const Card &card)const;
 };
 
 class FigureCard : public Card {
@@ -40,6 +44,10 @@ public:
 	FigureCard& operator=(const FigureCard&);
 //	Figure getFigure();
     virtual string toString() override;
+
+	bool greaterThen(const FigureCard& card);
+
+	bool greaterThen(const NumericCard& card);
 };
 
 class NumericCard : public Card {
@@ -52,6 +60,10 @@ public:
 	NumericCard& operator=(const NumericCard&);
 //	int getNumber();
     virtual string toString() override;
+
+	bool greaterThen(const NumericCard& card);
+
+	bool greaterThen(const FigureCard& card);
 };
 
 #endif

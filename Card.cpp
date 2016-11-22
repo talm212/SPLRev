@@ -34,6 +34,11 @@ string Card::toString() {
             break;
     }
     return s;
+}
+
+bool Card::greaterThen(const Card& card)const {
+	bool ans;
+	ans = card.greaterThen(*this);
 };
 
 //******************************************************
@@ -74,6 +79,14 @@ string FigureCard::toString() {
     return SNF;
 };
 
+bool FigureCard::greaterThen(const FigureCard& card){
+	return (this->figure>card.figure);
+}
+
+bool FigureCard::greaterThen(const NumericCard& card){
+	return true;
+}
+
 //******************************************************
 
 
@@ -95,6 +108,14 @@ NumericCard& NumericCard::operator=(const NumericCard&) {return *this;}
 string NumericCard::toString(){
     return std::to_string(number) + Card::toString();
 };
+
+bool NumericCard::greaterThen(const NumericCard& card){
+	return (this->number>card.number);
+}
+
+bool NumericCard::greaterThen(const FigureCard& card){
+	return false;
+}
 
 //******************************************************
 
