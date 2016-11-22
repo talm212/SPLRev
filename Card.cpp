@@ -22,12 +22,16 @@ string Card::toString() {
     switch (shape){
         case Club:
             s = "C";
+            break;
         case Diamond:
             s = "D";
+            break;
         case Heart:
             s = "H";
+            break;
         case Spade:
             s = "S";
+            break;
     }
     return s;
 };
@@ -89,7 +93,7 @@ NumericCard& NumericCard::operator=(const NumericCard&) {return *this;}
 };*/
 
 string NumericCard::toString(){
-    return ""+number + Card::toString();
+    return std::to_string(number) + Card::toString();
 };
 
 //******************************************************
