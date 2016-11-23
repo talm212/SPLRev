@@ -50,22 +50,29 @@ void List::deleteCard(Node &node) {
 }
 
 void List::addCard(Node &node) {
-	if(this->head == nullptr)
+	if(this->head== nullptr){
 		this->head=&node;
-	else {
-		if (this->head->getData()->greaterThen(*node.getData())) {
-			node.setNext(this->head);
-			this->head = &node;
-		} else {
-			Node *pointer = this->head;
-			while (pointer != nullptr and !pointer->getNext()->getData()->greaterThen(*node.getData()))
-				pointer = pointer->getNext();
+		return;
+	}
+
+	Node *pointer = this->head;
+	while (pointer!= nullptr){
+		if (pointer->getData()->greaterThen(node.getData())){
+			node.setBack(pointer->getBack());
+			if(pointer->getBack()!= nullptr)
+				pointer->getBack()->setNext(&node);
+			else{
+				this->head=&node;
+			}
+			node.setNext(pointer);
+			pointer->setBack(&node);
+			return;
+		}else if(pointer->getNext()== nullptr){
 			node.setBack(pointer);
-			node.setNext(pointer->getNext());
-			if (pointer->getNext() != nullptr)
-				pointer->getNext()->setBack(&node);
 			pointer->setNext(&node);
+			return;
 		}
+		pointer=pointer->getNext();
 	}
 	this->size++;
 }
@@ -78,7 +85,7 @@ void List::addCard(Card &card) {
 void List::deleteCard(Card &card) {
 	Node* pointer = this->head;
 	while(pointer!= nullptr){
-		if (pointer->getData()->equals(card)) {
+		if (pointer->getData()->equals(&card)) {
 			this->deleteCard(*pointer);
 			break;
 		}
