@@ -12,6 +12,8 @@ public:
 	void addCard(Card& card);
 	void deleteCard(Node& node);
 	void deleteCard(Card& card);
+	int getSize();
+	string toString();
 };
 
 class Node {

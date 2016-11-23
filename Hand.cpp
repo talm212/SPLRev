@@ -19,24 +19,16 @@ bool Hand::addCard(Card &card) {
 }
 
 int Hand::getNumberOfCards() {
-	return (int) this->myHand->size();
+	return (int) this->myHand->getSize();
 }
 
 string Hand::toString() {
-	map<string,Card*>::iterator iter;
-	string ans;
-
-	for(iter = this->myHand->begin(); iter!=this->myHand->end();iter++){
-		ans.append(iter->first);
-		ans.append(" ");
-	}
-
-	return ans;
+	this->myHand->toString();
 }
 
 bool Hand::removeCard(Card &card) {
 	try {
-		this->myHand->deleteCard(Card);
+		this->myHand->deleteCard(card);
 	}catch (exception e){
 		return false;
 	}

@@ -85,3 +85,17 @@ void List::deleteCard(Card &card) {
 		pointer = pointer->getNext();
 	}
 }
+
+int List::getSize() {
+	return this->size;
+}
+
+string List::toString() {
+	string ans ="";
+	Node *pointer = this->head;
+	while (pointer!= nullptr){
+		ans += pointer->getData().toString();
+		pointer = pointer->getNext();
+	}
+	return ans;
+}
