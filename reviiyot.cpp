@@ -3,6 +3,7 @@
 #include "Deck.h"
 #include "Hand.h"
 
+
 //#include <Game.h>
 
 using namespace std;
@@ -34,7 +35,7 @@ int main(int argc, char **argv) {
 
    // cout << deck->toString();
 
-	NumericCard *card1d = new NumericCard(1,Diamond);
+	Card* card1d = new NumericCard(1,Diamond);
 
 	FigureCard *cardas = new FigureCard(Ace,Spade);
 
@@ -57,5 +58,8 @@ int main(int argc, char **argv) {
 	hand.addCard(*card1d);
 	cout<<hand.toString()<<endl;
 
+	const Card &cardtry=  NumericCard(3,Heart);
+
+	//cout<< cardas->greaterThen(cardtry);
 }
 

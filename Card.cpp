@@ -39,6 +39,7 @@ string Card::toString() {
 bool Card::greaterThen(const Card& card)const {
 	bool ans;
 	ans = card.greaterThen(*this);
+	return !ans;
 };
 
 //******************************************************
