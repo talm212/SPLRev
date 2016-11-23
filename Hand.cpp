@@ -2,8 +2,7 @@
 #include "Hand.h"
 
 Hand::Hand() {
-	this->myHand = new map<string,Card*>();
-	cout<<this->myHand->size()<<endl;
+	this->myHand = new List();
 }
 
 Hand::~Hand() {
@@ -12,8 +11,7 @@ Hand::~Hand() {
 
 bool Hand::addCard(Card &card) {
 	try {
-		this->myHand->insert({card.toString(),&card});
-		cout<<this->myHand->size()<<endl;
+		this->myHand->addCard(card);
 	}catch (exception e){
 		return false;
 	}
@@ -38,10 +36,11 @@ string Hand::toString() {
 
 bool Hand::removeCard(Card &card) {
 	try {
-		this->myHand->erase(card.toString());
-		cout<<this->myHand->size()<<endl;
+		this->myHand->deleteCard()
 	}catch (exception e){
 		return false;
 	}
 	return true;
 }
+
+

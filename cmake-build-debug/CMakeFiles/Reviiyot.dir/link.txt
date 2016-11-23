@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -g   CMakeFiles/Reviiyot.dir/reviiyot.cpp.o CMakeFiles/Reviiyot.dir/Card.cpp.o CMakeFiles/Reviiyot.dir/Deck.cpp.o CMakeFiles/Reviiyot.dir/Hand.cpp.o CMakeFiles/Reviiyot.dir/List.cpp.o  -o Reviiyot 
