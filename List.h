@@ -1,6 +1,8 @@
 
 #include "Card.h"
 
+class Node;
+
 class List {
 private:
 	Node *head;
@@ -24,7 +26,7 @@ private:
 public:
 	Node(Card& card,Node* next, Node* back);
 	~Node();
-	Card getData();
+	Card* getData();
 	void setData(Card *data);
 	Node *getBack();
 	void setBack(Node* back);
