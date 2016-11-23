@@ -31,6 +31,10 @@ void Node::setBack(Node* back) {
 	this->back =back;
 }
 
+bool Node::hasNext() {
+	return (this->next!= nullptr);
+}
+
 List::List() {
 	size = 0;
 }
@@ -44,7 +48,14 @@ List::~List() {
 }
 
 void List::deleteCard(Node &node) {
-	node.getBack()->setNext(node.getNext());
+	if(node.getBack()!= nullptr) {
+		node.getBack()->setNext(node.getNext());
+	}else{
+		this->head=node.getNext();
+	}
+	if(node.getNext()!= nullptr){
+		node.getNext()->setBack(node.getBack());
+	}
 	delete(node.getData());
 	this->size--;
 }
@@ -56,30 +67,30 @@ void List::addCard(Node &node) {
 	}
 
 	Node *pointer = this->head;
-	while (pointer!= nullptr){
-		if (pointer->getData()->greaterThen(node.getData())){
+	while (pointer!= nullptr) {
+		if (pointer->getData()->greaterThen(node.getData())) {
 			node.setBack(pointer->getBack());
-			if(pointer->getBack()!= nullptr)
+			if (pointer->getBack() != nullptr)
 				pointer->getBack()->setNext(&node);
-			else{
-				this->head=&node;
+			else {
+				this->head = &node;
 			}
 			node.setNext(pointer);
 			pointer->setBack(&node);
 			return;
-		}else if(pointer->getNext()== nullptr){
+		} else if (pointer->getNext() == nullptr) {
 			node.setBack(pointer);
 			pointer->setNext(&node);
 			return;
 		}
-		pointer=pointer->getNext();
+		pointer = pointer->getNext();
 	}
-	this->size++;
 }
 
 void List::addCard(Card &card) {
 	Node *temp = new Node(card, nullptr, nullptr);
 	this->addCard(*temp);
+	this->size++;
 }
 
 void List::deleteCard(Card &card) {
@@ -105,4 +116,8 @@ string List::toString() {
 		pointer = pointer->getNext();
 	}
 	return ans;
+}
+
+Node* List::getHead() {
+	return this->head;
 }

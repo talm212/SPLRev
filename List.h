@@ -10,6 +10,7 @@ private:
 public:
 	List();
 	~List();
+	Node* getHead();
 	void addCard(Node& node);
 	void addCard(Card& card);
 	void deleteCard(Node& node);
@@ -32,4 +33,5 @@ public:
 	void setBack(Node* back);
 	Node *getNext();
 	void setNext(Node* next);
+	bool hasNext();
 };
