@@ -17,10 +17,7 @@ public:
 	string getName();   //Returns the name of the player
 	void removeCardsFromHand(vector<Card*> cards);
 	void addCardsToHand(vector<Card*> cards);
-	Card* getTheGreatestCard();
-	Card* getTheLowestCard();
-	Card* getTheCardThatApearsTheMost();
-	Card* getTheCardThatApersTheList();
+
 
 };
 

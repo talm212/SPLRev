@@ -4,10 +4,6 @@
 //#include "Player.h"
 
 
-Card *Player::getTheCardThatApersTheList() {
-	return nullptr;
-}
-
 string Player::getName() {
 	return name;
 }
@@ -24,16 +20,6 @@ void Player::addCardsToHand(vector<Card *> cards) {
 	}
 }
 
-Card *Player::getTheGreatestCard() {
-	return nullptr;
-}
 
-Card *Player::getTheLowestCard() {
-	return nullptr;
-}
-
-Card *Player::getTheCardThatApearsTheMost() {
-	return nullptr;
-}
 
 
