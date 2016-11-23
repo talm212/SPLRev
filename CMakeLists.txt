@@ -14,6 +14,7 @@ set(SOURCE_FILES
     List.cpp
     List.h
     Player.h
-    reviiyot.cpp)
+    reviiyot.cpp
+    Player.cpp)
 
 add_executable(Reviiyot ${SOURCE_FILES})
