@@ -13,14 +13,13 @@ private:
 	vector<Card*> m_deck;
 public:
 	Deck();//constructor that returns an empty deck
-	Deck(int i);//constructor that returns a deck with 4 of each card from 2 to i +jack, queen, king and ace.
+	Deck(vector<Card*>);//constructor get a vector of cards pointers and push them in to the deck m_vector property.
 	~Deck();
-	//Deck& Deck::operator=(const Deck&);//asaignment operator
+	Deck& operator=(const Deck&);//asaignment operator
 
 	Card* fetchCard();   //Returns the top card of the deck and remove it rom the deck
 	int getNumberOfCards(); // Get the number of cards in the deck
 	string toString(); // Return the cards in top-to-bottom order in a single line, cards are separated by a space ex: "12S QD AS 3H"
-    void shuffle();//shuffle the deck
 };
 
 #endif
