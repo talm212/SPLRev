@@ -36,17 +36,16 @@ string Card::toString() {
     return s;
 }
 
-bool Card::greaterThen(const Card& card)const {
-	bool ans;
-	ans = card.greaterThen(*this);
-	return !ans;
-}
+/*bool Card::greaterThen(const Card& card)const {
+	bool ans =!card.greaterThen(*this);
+	return ans;
+}*/
 
-bool Card::equals(const Card &card) const {
+/*bool Card::equals(const Card &card) const {
 	bool ans;
 	ans = card.equals(*this);
 	return ans;
-};
+};*/
 
 
 //******************************************************
@@ -87,20 +86,28 @@ string FigureCard::toString() {
     return SNF;
 };
 
-bool FigureCard::greaterThen(const FigureCard& card){
-	return (this->figure>card.figure);
+bool FigureCard::greaterThen(const Card *card)const{
+	return !card->greaterThen(this);
 }
 
-bool FigureCard::greaterThen(const NumericCard& card){
+bool FigureCard::greaterThen(const FigureCard* card)const{
+	return (this->figure>card->figure);
+}
+
+bool FigureCard::greaterThen(const NumericCard* card)const{
 	return true;
 }
 
-bool FigureCard::equals(const FigureCard &card) {
-	return (this->getFigure()==card.getFigure() and this->getShape()==card.getShape());
+bool FigureCard::equals(const FigureCard *card)const {
+	return (this->getFigure()==card->getFigure() and this->getShape()==card->getShape());
 }
 
-bool FigureCard::equals(const NumericCard &card) {
+bool FigureCard::equals(const NumericCard *card)const {
 	return false;
+}
+
+bool FigureCard::equals(const Card *card) const {
+	return card->equals(this);
 }
 
 //******************************************************
@@ -125,21 +132,30 @@ string NumericCard::toString(){
     return std::to_string(number) + Card::toString();
 };
 
-bool NumericCard::greaterThen(const NumericCard& card){
-	return (this->number>card.number);
+bool NumericCard::greaterThen(const NumericCard* card)const{
+	return (this->number>card->number);
 }
 
-bool NumericCard::greaterThen(const FigureCard& card){
+bool NumericCard::greaterThen(const FigureCard* card)const{
 	return false;
 }
 
-bool NumericCard::equals(const FigureCard &card) {
+bool NumericCard::greaterThen(const Card *card)const{
+	return !card->greaterThen(this);
+}
+
+bool NumericCard::equals(const FigureCard *card)const {
 	return false;
 }
 
-bool NumericCard::equals(const NumericCard &card) {
-	return (this->getNumber()==card.getNumber() and this->getShape()==card.getShape());
+bool NumericCard::equals(const NumericCard *card)const {
+	return (this->getNumber()==card->getNumber() and this->getShape()==card->getShape());
 }
+
+bool NumericCard::equals(const Card *card) const {
+	return equals(this);
+}
+
 
 //******************************************************
 

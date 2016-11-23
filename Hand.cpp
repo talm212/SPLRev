@@ -23,7 +23,7 @@ int Hand::getNumberOfCards() {
 }
 
 string Hand::toString() {
-	this->myHand->toString();
+	return this->myHand->toString();
 }
 
 bool Hand::removeCard(Card &card) {

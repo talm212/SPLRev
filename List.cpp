@@ -53,12 +53,12 @@ void List::addCard(Node &node) {
 	if(this->head == nullptr)
 		this->head=&node;
 	else {
-		if (this->head->getData()->greaterThen(*node.getData())) {
+		if (this->head->getData()->greaterThen(node.getData())) {
 			node.setNext(this->head);
 			this->head = &node;
 		} else {
 			Node *pointer = this->head;
-			while (pointer != nullptr and !pointer->getNext()->getData()->greaterThen(*node.getData()))
+			while (pointer != nullptr and !pointer->getNext()->getData()->greaterThen(node.getData()))
 				pointer = pointer->getNext();
 			node.setBack(pointer);
 			node.setNext(pointer->getNext());
@@ -78,7 +78,7 @@ void List::addCard(Card &card) {
 void List::deleteCard(Card &card) {
 	Node* pointer = this->head;
 	while(pointer!= nullptr){
-		if (pointer->getData()->equals(card)) {
+		if (pointer->getData()->equals(&card)) {
 			this->deleteCard(*pointer);
 			break;
 		}
