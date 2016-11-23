@@ -5,14 +5,23 @@
 
 #include <Hand.h>
 #include "Hand.h"
-
+#include "vector"
 using namespace std;
 
 class Player : public Hand {
 private:
 	const string name;
 public:
+	Player(const string &name);
+
 	string getName();   //Returns the name of the player
+	void removeCardsFromHand(vector<Card*> cards);
+	void addCardsToHand(vector<Card*> cards);
+	Card* getTheGreatestCard();
+	Card* getTheLowestCard();
+	Card* getTheCardThatApearsTheMost();
+	Card* getTheCardThatApersTheList();
+
 };
 
 class PlayerType1 : public Player {  //For strategy 1
