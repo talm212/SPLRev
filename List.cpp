@@ -7,8 +7,8 @@ Node::Node(Card &card, Node *next1, Node *back1): data(&card),next(next1),back(b
 Node::~Node() {
 }
 
-Card Node::getData() {
-	return this->&data;
+Card* Node::getData() {
+	return this->data;
 }
 
 void Node::setNext(Node *next) {
@@ -53,12 +53,12 @@ void List::addCard(Node &node) {
 	if(this->head == nullptr)
 		this->head=&node;
 	else {
-		if (this->head->getData().greaterThen(node.getData())) {
+		if (this->head->getData()->greaterThen(*node.getData())) {
 			node.setNext(this->head);
 			this->head = &node;
 		} else {
 			Node *pointer = this->head;
-			while (pointer != nullptr and !pointer->getNext()->getData().greaterThen(node.getData()))
+			while (pointer != nullptr and !pointer->getNext()->getData()->greaterThen(*node.getData()))
 				pointer = pointer->getNext();
 			node.setBack(pointer);
 			node.setNext(pointer->getNext());
@@ -78,7 +78,7 @@ void List::addCard(Card &card) {
 void List::deleteCard(Card &card) {
 	Node* pointer = this->head;
 	while(pointer!= nullptr){
-		if (pointer->getData().equals(card)) {
+		if (pointer->getData()->equals(card)) {
 			this->deleteCard(*pointer);
 			break;
 		}
@@ -94,7 +94,7 @@ string List::toString() {
 	string ans ="";
 	Node *pointer = this->head;
 	while (pointer!= nullptr){
-		ans += pointer->getData().toString();
+		ans += pointer->getData()->toString();
 		pointer = pointer->getNext();
 	}
 	return ans;

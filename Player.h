@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include <Hand.h>
+#include "Hand.h"
 
 using namespace std;
 
