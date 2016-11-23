@@ -36,7 +36,7 @@ string Hand::toString() {
 
 bool Hand::removeCard(Card &card) {
 	try {
-		this->myHand->deleteCard()
+		this->myHand->deleteCard(Card);
 	}catch (exception e){
 		return false;
 	}

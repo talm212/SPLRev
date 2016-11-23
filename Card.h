@@ -30,8 +30,9 @@ public:
     virtual ~Card();
 	Card(const Card&);
 	Card& operator=(const Card&);
-//	Shape getShape();
+	Shape getShape()const;
 	virtual bool greaterThen(const Card &card)const;
+	virtual bool equals(const Card& card)const;
 };
 
 class FigureCard : public Card {
@@ -42,12 +43,13 @@ public:
 	~FigureCard();
 	FigureCard(const FigureCard& copyCard);
 	FigureCard& operator=(const FigureCard&);
-//	Figure getFigure();
+	Figure getFigure()const;
     virtual string toString() override;
 
 	bool greaterThen(const FigureCard& card);
-
+	bool equals(const FigureCard& card);
 	bool greaterThen(const NumericCard& card);
+	bool equals(const NumericCard& card);
 };
 
 class NumericCard : public Card {
@@ -58,12 +60,13 @@ public:
 	~NumericCard();
 	NumericCard(const NumericCard&);
 	NumericCard& operator=(const NumericCard&);
-//	int getNumber();
+	int getNumber()const;
     virtual string toString() override;
 
 	bool greaterThen(const NumericCard& card);
-
+	bool equals(const NumericCard& card);
 	bool greaterThen(const FigureCard& card);
+	bool equals(const FigureCard& card);
 };
 
 #endif

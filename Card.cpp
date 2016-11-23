@@ -11,9 +11,9 @@ Card::Card(const Card& card): shape(card.shape) {}
 
 Card& Card::operator=(const Card&) {return *this;}
 
-/*Shape Card::getShape() {
+Shape Card::getShape()const {
     return this->shape;
-};*/
+};
 
 
 string Card::toString() {
@@ -40,7 +40,14 @@ bool Card::greaterThen(const Card& card)const {
 	bool ans;
 	ans = card.greaterThen(*this);
 	return !ans;
+}
+
+bool Card::equals(const Card &card) const {
+	bool ans;
+	ans = card.equals(*this);
+	return ans;
 };
+
 
 //******************************************************
 
@@ -56,9 +63,9 @@ FigureCard::FigureCard(const FigureCard& copyCard) :Card(copyCard),figure(copyCa
 
 FigureCard& FigureCard::operator=(const FigureCard&) {}
 
-/*Figure FigureCard::getFigure() {
+Figure FigureCard::getFigure()const {
     return this->figure;
-};*/
+};
 
 string FigureCard::toString() {
 
@@ -88,6 +95,14 @@ bool FigureCard::greaterThen(const NumericCard& card){
 	return true;
 }
 
+bool FigureCard::equals(const FigureCard &card) {
+	return (this->getFigure()==card.getFigure() and this->getShape()==card.getShape());
+}
+
+bool FigureCard::equals(const NumericCard &card) {
+	return false;
+}
+
 //******************************************************
 
 
@@ -102,9 +117,9 @@ NumericCard::NumericCard(const NumericCard& copyCard):Card(copyCard),number(copy
 
 NumericCard& NumericCard::operator=(const NumericCard&) {return *this;}
 
-/*int NumericCard::getNumber() {
+int NumericCard::getNumber()const {
     return this->number;
-};*/
+};
 
 string NumericCard::toString(){
     return std::to_string(number) + Card::toString();
@@ -116,6 +131,14 @@ bool NumericCard::greaterThen(const NumericCard& card){
 
 bool NumericCard::greaterThen(const FigureCard& card){
 	return false;
+}
+
+bool NumericCard::equals(const FigureCard &card) {
+	return false;
+}
+
+bool NumericCard::equals(const NumericCard &card) {
+	return (this->getNumber()==card.getNumber() and this->getShape()==card.getShape());
 }
 
 //******************************************************

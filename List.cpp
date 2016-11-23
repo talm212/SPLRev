@@ -74,3 +74,14 @@ void List::addCard(Card &card) {
 	Node *temp = new Node(card, nullptr, nullptr);
 	this->addCard(*temp);
 }
+
+void List::deleteCard(Card &card) {
+	Node* pointer = this->head;
+	while(pointer!= nullptr){
+		if (pointer->getData().equals(card)) {
+			this->deleteCard(*pointer);
+			break;
+		}
+		pointer = pointer->getNext();
+	}
+}
