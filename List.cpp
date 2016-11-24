@@ -70,21 +70,22 @@ void List::addCard(Node &node) {
 
 	Node *pointer = this->head;
 	while (pointer!= nullptr) {
-		if (pointer->getData()!= nullptr and node.getData()!= nullptr and pointer->getData()->greaterThen(node.getData())) {
-			node.setBack(pointer->getBack());
-			if (pointer->getBack() != nullptr)
-				pointer->getBack()->setNext(&node);
-			else {
-				this->head = &node;
+		if (pointer->getData()!= nullptr and node.getData()!= nullptr)
+			if(pointer->getData()->greaterThen(node.getData())>0) {
+				node.setBack(pointer->getBack());
+				if (pointer->getBack() != nullptr)
+					pointer->getBack()->setNext(&node);
+				else {
+					this->head = &node;
+				}
+				node.setNext(pointer);
+				pointer->setBack(&node);
+				return;
+			} else if (pointer->getNext() == nullptr) {
+				node.setBack(pointer);
+				pointer->setNext(&node);
+				return;
 			}
-			node.setNext(pointer);
-			pointer->setBack(&node);
-			return;
-		} else if (pointer->getNext() == nullptr) {
-			node.setBack(pointer);
-			pointer->setNext(&node);
-			return;
-		}
 		pointer = pointer->getNext();
 	}
 }

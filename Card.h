@@ -32,9 +32,9 @@ public:
 	Card& operator=(const Card&);
 	Shape getShape()const;
 
-	virtual bool greaterThen(const Card *card)const =0;
-	virtual bool greaterThen(const FigureCard *card)const =0;
-	virtual bool greaterThen(const NumericCard *card)const =0;
+	virtual int greaterThen(const Card *card)const =0;
+	virtual int greaterThen(const FigureCard *card)const =0;
+	virtual int greaterThen(const NumericCard *card)const =0;
 	virtual bool equals(const Card* card)const =0;
 	virtual bool equals(const FigureCard* card)const =0;
 	virtual bool equals(const NumericCard* card)const =0;
@@ -51,11 +51,11 @@ public:
 	Figure getFigure()const;
     virtual string toString() override;
 
-	virtual bool greaterThen(const FigureCard* card)const override;
+	virtual int greaterThen(const FigureCard* card)const override;
 	virtual bool equals(const FigureCard* card)const override;
-	virtual bool greaterThen(const NumericCard* card)const override;
+	virtual int greaterThen(const NumericCard* card)const override;
 	virtual bool equals(const NumericCard* card)const override;
-	virtual bool greaterThen(const Card *card)const override ;
+	virtual int greaterThen(const Card *card)const override ;
 	virtual bool equals(const Card* card)const override;
 };
 
@@ -70,11 +70,11 @@ public:
 	int getNumber()const;
     virtual string toString() override;
 
-	virtual bool greaterThen(const NumericCard* card)const override;
+	virtual int greaterThen(const NumericCard* card)const override;
 	virtual bool equals(const NumericCard* card)const override;
-	virtual bool greaterThen(const FigureCard* card)const override;
+	virtual int greaterThen(const FigureCard* card)const override;
 	virtual bool equals(const FigureCard* card)const override;
-	virtual bool greaterThen(const Card *card)const override;
+	virtual int greaterThen(const Card *card)const override;
 	virtual bool equals(const Card* card)const override;
 };
 

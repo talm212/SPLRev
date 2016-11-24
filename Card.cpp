@@ -86,16 +86,16 @@ string FigureCard::toString() {
     return SNF;
 };
 
-bool FigureCard::greaterThen(const Card *card)const{
-	return !card->greaterThen(this);
+int FigureCard::greaterThen(const Card *card)const{
+	return card->greaterThen(this) * (-1);
 }
 
-bool FigureCard::greaterThen(const FigureCard* card)const{
-	return (this->figure>card->figure);
+int FigureCard::greaterThen(const FigureCard* card)const{
+	return (this->figure-card->figure);
 }
 
-bool FigureCard::greaterThen(const NumericCard* card)const{
-	return true;
+int FigureCard::greaterThen(const NumericCard* card)const{
+	return 1;
 }
 
 bool FigureCard::equals(const FigureCard *card)const {
@@ -132,16 +132,16 @@ string NumericCard::toString(){
     return std::to_string(number) + Card::toString();
 };
 
-bool NumericCard::greaterThen(const NumericCard* card)const{
-	return (this->number>card->number);
+int NumericCard::greaterThen(const NumericCard* card)const{
+	return (this->number-card->number);
 }
 
-bool NumericCard::greaterThen(const FigureCard* card)const{
-	return false;
+int NumericCard::greaterThen(const FigureCard* card)const{
+	return -1;
 }
 
-bool NumericCard::greaterThen(const Card *card)const{
-	return !card->greaterThen(this);
+int NumericCard::greaterThen(const Card *card)const{
+	return card->greaterThen(this)*(-1);
 }
 
 bool NumericCard::equals(const FigureCard *card)const {
