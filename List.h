@@ -13,7 +13,7 @@ public:
 	Node* getHead();
 	void addCard(Node& node);
 	void addCard(Card& card);
-	void deleteCard(Node& node);
+	void deleteCard(Node* node);
 	void deleteCard(Card& card);
 	int getSize();
 	string toString();

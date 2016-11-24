@@ -4,6 +4,9 @@
 //#include "Player.h"
 
 
+#include "Card.h"
+#include "Player.h"
+
 Card *Player::getTheCardThatApersTheList() {
 	return nullptr;
 }
