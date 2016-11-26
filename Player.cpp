@@ -4,6 +4,11 @@
 #include "Player.h"
 
 
+
+#include "Card.h"
+#include "Player.h"
+
+
 string Player::getName() {
 	return name;
 }

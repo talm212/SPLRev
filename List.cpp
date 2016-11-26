@@ -41,23 +41,25 @@ List::List() {
 
 List::~List() {
 	while(this->head!= nullptr){
-		delete(this->head->getData());
+		delete(this->head);
 		this->head = this->head->getNext();
 	}
 	delete(this->head);
 }
 
-void List::deleteCard(Node &node) {
-	if(node.getBack()!= nullptr) {
-		node.getBack()->setNext(node.getNext());
+void List::deleteCard(Node *node) {
+	if(node== nullptr)
+		return;
+	if(node->getBack()!= nullptr) {
+		node->getBack()->setNext(node->getNext());
 	}else{
-		this->head=node.getNext();
+		this->head=node->getNext();
 	}
-	if(node.getNext()!= nullptr){
-		node.getNext()->setBack(node.getBack());
+	if(node->getNext()!= nullptr){
+		node->getNext()->setBack(node->getBack());
 	}
-	delete(node.getData());
 	this->size--;
+	delete(node);
 }
 
 void List::addCard(Node &node) {
@@ -68,21 +70,22 @@ void List::addCard(Node &node) {
 
 	Node *pointer = this->head;
 	while (pointer!= nullptr) {
-		if (pointer->getData()->greaterThen(node.getData())) {
-			node.setBack(pointer->getBack());
-			if (pointer->getBack() != nullptr)
-				pointer->getBack()->setNext(&node);
-			else {
-				this->head = &node;
+		if (pointer->getData()!= nullptr and node.getData()!= nullptr)
+			if(pointer->getData()->greaterThen(node.getData())>0) {
+				node.setBack(pointer->getBack());
+				if (pointer->getBack() != nullptr)
+					pointer->getBack()->setNext(&node);
+				else {
+					this->head = &node;
+				}
+				node.setNext(pointer);
+				pointer->setBack(&node);
+				return;
+			} else if (pointer->getNext() == nullptr) {
+				node.setBack(pointer);
+				pointer->setNext(&node);
+				return;
 			}
-			node.setNext(pointer);
-			pointer->setBack(&node);
-			return;
-		} else if (pointer->getNext() == nullptr) {
-			node.setBack(pointer);
-			pointer->setNext(&node);
-			return;
-		}
 		pointer = pointer->getNext();
 	}
 }
@@ -97,7 +100,7 @@ void List::deleteCard(Card &card) {
 	Node* pointer = this->head;
 	while(pointer!= nullptr){
 		if (pointer->getData()->equals(&card)) {
-			this->deleteCard(*pointer);
+			this->deleteCard(pointer);
 			break;
 		}
 		pointer = pointer->getNext();
