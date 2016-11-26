@@ -36,14 +36,12 @@ bool Hand::removeCard(Card &card) {
 }
 
 Card *Hand::getTheGreatestCard() {
-	if(myHand->head!= nullptr)
+	if(myHand->getHead()== nullptr)
 		return nullptr;
 	else{
-		Node *node=myHand->head;
-		Node *next=node->getNext();
-		while(next != nullptr) {
-			node = next;
-			next = node->getNext();
+		Node *node=myHand->getHead();
+		while(node->hasNext()) {
+			node = node->getNext();
 		}
 		return node->getData();
 
@@ -51,17 +49,67 @@ Card *Hand::getTheGreatestCard() {
 }
 
 Card *Hand::getTheLowestCard() {
-	if(myHand->head!= nullptr)
+	if(myHand->getHead()== nullptr)
 		return nullptr;
 	else
-		return myHand->head->getData();
+		return myHand->getHead()->getData();
 }
 
 Card *Hand::getTheCardThatApearsTheMost() {
-	return nullptr;
+	int highestNumber=0;
+	int currentCounter=0;
+	Card* choosen= nullptr;
+	if(myHand->getHead()== nullptr)
+		return choosen;
+	else{
+		Node *current=myHand->getHead();
+		Card *currentCard=myHand->getHead()->getData();
+		choosen=current->getData();
+		while(current!= nullptr) {
+			if(current->getData()->greaterThen(currentCard)==0){ //if equals
+				currentCounter++;
+			}
+			else{
+				currentCounter=1;
+				currentCard=current->getData();
+			}
+			if(currentCounter>=highestNumber){
+				highestNumber=currentCounter;
+				choosen=current->getData();
+			}
+			current = current->getNext();
+		}
+		return choosen;
+
+	}
+
 }
 
 Card *Hand::getTheCardThatApersTheList() {
-	return nullptr;
+	int lowestNumber=0;
+	int currentCounter=0;
+	Card* chosen= nullptr;
+	if(myHand->getHead()== nullptr)
+		return chosen;
+	else{
+		Node *current=myHand->getHead();
+		Card *currentCard=myHand->getHead()->getData();
+		chosen=current->getData();
+		while(current!= nullptr) {
+			if(current->getData()->greaterThen(currentCard)==0){ //if equals
+				currentCounter++;
+			}
+			else{
+				if(currentCounter<lowestNumber) {
+					lowestNumber = currentCounter;
+					chosen = currentCard;
+				}
+				currentCounter = 1;
+				currentCard = current->getData();
+			}
+			current = current->getNext();
+		}
+		return chosen;
+	}
 }
 

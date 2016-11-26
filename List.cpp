@@ -112,7 +112,7 @@ string List::toString() {
 	string ans ="";
 	Node *pointer = this->head;
 	while (pointer!= nullptr){
-		ans += pointer->getData()->toString();
+		ans += pointer->getData()->toString()+ " ";
 		pointer = pointer->getNext();
 	}
 	return ans;

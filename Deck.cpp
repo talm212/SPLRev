@@ -17,18 +17,29 @@ Deck::Deck(vector<Card*> cards) {
 Deck::~Deck() {
 //destroy the card vector with in the deck.
 	for(std::vector<Card*>::iterator it = m_deck.begin(); it != m_deck.end(); ++it) {
-		delete *it;
+		if(*it!= nullptr) {
+			delete *it;
+			*it = nullptr;
+		}
 	}
+	/*if(&m_deck!= nullptr) {
+		delete &m_deck;
+	}*/
 }
 //might need some work on the asignment operator
-Deck& Deck::operator=(const Deck&) {
+Deck& Deck::operator=(const Deck& deck) {
+	if(this == &deck)
+		return *this;
+	m_deck =deck.m_deck;
 	return *this;
 }
 
 
 
 Card * Deck::fetchCard() {
-	return Deck::m_deck.back();
+	Card * returnedCard=Deck::m_deck.back();
+	Deck::m_deck.pop_back();
+	return returnedCard;
 }
 
 int Deck::getNumberOfCards() {
@@ -37,12 +48,12 @@ int Deck::getNumberOfCards() {
 }
 
 string Deck::toString() {
-
+string answer;
 	for (vector<Card*>::reverse_iterator i = Deck::m_deck.rbegin();
 		 i != Deck::m_deck.rend(); ++i ) {
-		(*i)->toString();
+		answer+=(*i)->toString()+ " ";
 	}
-
+return answer;
 }
 
 
