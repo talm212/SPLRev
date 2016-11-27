@@ -38,6 +38,9 @@ public:
 	virtual bool equals(const Card* card)const =0;
 	virtual bool equals(const FigureCard* card)const =0;
 	virtual bool equals(const NumericCard* card)const =0;
+	virtual int greaterThenWithShape(const Card *card)const =0;
+
+	int comperShape(const Card &card)const;
 };
 
 class FigureCard : public Card {
@@ -57,6 +60,7 @@ public:
 	virtual bool equals(const NumericCard* card)const override;
 	virtual int greaterThen(const Card *card)const override ;
 	virtual bool equals(const Card* card)const override;
+	virtual int greaterThenWithShape(const Card *card)const override;
 };
 
 class NumericCard : public Card {
@@ -76,6 +80,7 @@ public:
 	virtual bool equals(const FigureCard* card)const override;
 	virtual int greaterThen(const Card *card)const override;
 	virtual bool equals(const Card* card)const override;
+	virtual int greaterThenWithShape(const Card *card)const override;
 };
 
 #endif
