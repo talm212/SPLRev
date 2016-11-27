@@ -56,6 +56,16 @@ string answer;
 return answer;
 }
 
+void Deck::dealCards(Player ** playeres) {
+
+	for( unsigned int a = 0; a < sizeof(playeres)/sizeof(playeres[0]); a = a + 1 ) {
+		for (unsigned int sevencycle = 0;
+			 sevencycle < 7; sevencycle = sevencycle + 1) {
+			(*playeres[a]).addCard(*fetchCard());
+		}
+	}
+}
+
 
 
 
