@@ -97,26 +97,25 @@ void List::addCard(Card &card) {
 	this->size++;
 }
 
-void List::addCard(std::vector<Card&> &cards){
+/*void List::addCard(std::vector<Card&> &cards){
 	Card *card;
 	while(!cards.empty()){
 		card = &cards.back();
 		cards.pop_back();
 		this->addCard(*card);
 	}
-}
+}*/
 
-vector<Card*>* List::deleteCard(Card &card) {
-	std::vector<Card*> *list= new vector<Card*>();
+bool List::deleteCard(Card &card) {
 	Node* pointer = this->head;
 	while(pointer!= nullptr){
 		if (pointer->getData()->equals(&card)) {
-			list->push_back(pointer->getData());
 			this->deleteCard(pointer);
+			return true;
 		}
 		pointer = pointer->getNext();
 	}
-	return list;
+	return false;
 }
 
 int List::getSize() {

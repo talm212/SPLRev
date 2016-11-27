@@ -32,6 +32,10 @@ Player::Player(const string &name): name(name) {
 
 PlayerType1::PlayerType1(const string &name) : Player(name) {}
 
+/*vector<Card *> PlayerType1::ask(Player &player, Card &card) {
+
+}*/
+
 PlayerType2::PlayerType2(const string &name) : Player(name) {
 
 }
