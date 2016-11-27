@@ -14,9 +14,11 @@ public:
 	void addCard(Node& node);
 	void addCard(Card& card);
 	void deleteCard(Node* node);
-	void deleteCard(Card& card);
+	vector<Card *> * deleteCard(Card& card);
 	int getSize();
 	string toString();
+
+	void addCard(vector<Card &> &cards);
 };
 
 class Node {

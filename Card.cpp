@@ -47,6 +47,9 @@ string Card::toString() {
 	return ans;
 };*/
 
+int Card::comperShape(const Card &card)const {
+	return this->shape-card.shape;
+}
 
 //******************************************************
 
@@ -110,6 +113,14 @@ bool FigureCard::equals(const Card *card) const {
 	return card->equals(this);
 }
 
+int FigureCard::greaterThenWithShape(const Card *card) const {
+	int ans = this->greaterThen(card);
+	if(ans==0)
+		return this->comperShape(*card);
+	return ans;
+}
+
+
 //******************************************************
 
 
@@ -154,6 +165,13 @@ bool NumericCard::equals(const NumericCard *card)const {
 
 bool NumericCard::equals(const Card *card) const {
 	return equals(this);
+}
+
+int NumericCard::greaterThenWithShape(const Card *card) const {
+	int ans = this->greaterThen(card);
+	if(ans==0)
+		return this->comperShape(*card);
+	return ans;
 }
 
 
