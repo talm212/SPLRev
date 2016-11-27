@@ -86,8 +86,8 @@ Card *Hand::getTheCardThatApearsTheMost() {
 }
 
 Card *Hand::getTheCardThatApersTheList() {
-	int lowestNumber=0;
-	int currentCounter=0;
+	int lowestNumber=4;
+	int currentCounter=1;
 	Card* chosen= nullptr;
 	if(myHand->getHead()== nullptr)
 		return chosen;
@@ -96,6 +96,8 @@ Card *Hand::getTheCardThatApersTheList() {
 		Card *currentCard=myHand->getHead()->getData();
 		chosen=current->getData();
 		while(current!= nullptr) {
+			//cout << "check:   " + std::to_string(current->getData()->greaterThen(currentCard)) + "      "+ current->getData()->toString()+" " +currentCard->toString() +"     "+std::to_string(currentCounter)+"     "+std::to_string(lowestNumber)<<endl;
+
 			if(current->getData()->greaterThen(currentCard)==0){ //if equals
 				currentCounter++;
 			}
