@@ -1,5 +1,4 @@
 
-#include <vector>
 #include "List.h"
 
 Node::Node(Card &card, Node *next1, Node *back1): data(&card),next(next1),back(back1){
@@ -97,14 +96,14 @@ void List::addCard(Card &card) {
 	this->size++;
 }
 
-/*void List::addCard(std::vector<Card&> &cards){
+void List::addCard(vector<Card*> &cards){
 	Card *card;
 	while(!cards.empty()){
-		card = &cards.back();
+		card = cards.back();
 		cards.pop_back();
 		this->addCard(*card);
 	}
-}*/
+}
 
 bool List::deleteCard(Card &card) {
 	Node* pointer = this->head;

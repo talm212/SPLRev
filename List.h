@@ -1,5 +1,7 @@
 
+#include "vector"
 #include "Card.h"
+
 
 class Node;
 
@@ -18,7 +20,7 @@ public:
 	int getSize();
 	string toString();
 
-	//void addCard(vector<Card &> &cards);
+	void addCard(vector<Card *> &cards);
 };
 
 class Node {
